@@ -7,12 +7,52 @@
         <script>
 
             var textObjt;
+            var username;
+
+            //arrays of bad that will be changed to good words
+            var bad_words = ["dick", "idiot", "pussy", "retard", "ass", "asscock", "shit ass"];
+            var good_words = ["good guy", "smart", "courageous", "intelligent", "good person", "cool", "beatiful person"];
+
             $(document).ready(function(){
+
+                //user id control
+                $('#id_controller').click(function(){
+
+                    username = $('#uid').val();
+                    $('#uid').disabled = true;
+                    $('#header1').text("Welcome " + username);
+
+
+                });
+
+                $('#header1').text("Welcome " + username);
 
                 $("#enter_button").click(function(){
 
                     textObjt = $('#chatLine').val();
-                    $('#demo').text(textObjt);
+
+                    //change bad words for good
+
+                    //create an array for strings
+                    var arr = textObjt.split(" ");
+                    var i = 0;
+
+                   for(count = 0; count < 6; count++){
+
+                        for(count2 = 0; count2<6; count2++){
+
+                            if(arr[count] == bad_words[count2]){
+                                
+                                arr[count] = good_words[count2];
+
+                            }
+
+                        }
+
+                    }
+
+                    $("#chatArea").append(username + ": " + arr + "<p></p>");
+                    //$("#chatArea").append(username + ": " + textObjt + "<p></p>");
 
                     //$('#demo').val("hi");
                 });
@@ -22,13 +62,14 @@
     </head>
 
 <body>
-    <h1 id="header1"></h1>
     <div class="chatBox">
         <div class="chatHeader">
-            <h2>Welcome user</h2>
+            <h2 id="header1">Welcome user</h2>
+            <input id='uid' type='text' value="Put your id here">
+            <button id='id_controller'>Enter</button>
         </div> 
          <div id='chatArea' style='border:1px solid #aaa; width:500px; height:400px; overflow:auto;'>
-             <p id="demo"></p>
+        
         </div>
         <input id='chatLine' type='text' value="text here...">
         <button id="enter_button">Send</button>
