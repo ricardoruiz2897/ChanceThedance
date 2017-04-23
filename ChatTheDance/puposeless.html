@@ -10,8 +10,8 @@
             var username;
 
             //arrays of bad that will be changed to good words
-            var bad_words = ["dick", "idiot", "pussy", "retard", "ass", "asscock", "shit ass"];
-            var good_words = ["good guy", "smart", "courageous", "intelligent", "good person", "cool", "beatiful person"];
+            var bad_words = ["dick", "idiot", "pussy", "retard", "ass", "asscock", "shit ass", "shit"];
+            var good_words = ["good guy", "smart", "courageous", "intelligent", "good person", "cool", "beatiful person", "good"];
 
             $(document).ready(function(){
 
@@ -37,9 +37,10 @@
                     var arr = textObjt.split(" ");
                     var i = 0;
 
-                   for(count = 0; count < 6; count++){
+                    
+                   for(count = 0; count < arr.length; count++){
 
-                        for(count2 = 0; count2<6; count2++){
+                        for(count2 = 0; count2<bad_words.length; count2++){
 
                             if(arr[count] == bad_words[count2]){
                                 
@@ -50,8 +51,17 @@
                         }
 
                     }
+                    
+                    //create new string with text
+                    var n = '';
+                    for(count = 0; count<arr.length; count++) {
 
-                    $("#chatArea").append(username + ": " + arr + "<p></p>");
+                        n = n + " " + arr[count];
+
+                    }
+                    
+
+                    $("#chatArea").append(username + ": " + n + "<p></p>");
                     //$("#chatArea").append(username + ": " + textObjt + "<p></p>");
 
                     //$('#demo').val("hi");
