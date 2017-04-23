@@ -1,0 +1,157 @@
+$border-color: #D3D3D3;
+$evergreen: #ff4d4d;
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tech {
+      height: 300px;
+    width: 500px;
+   padding:2px;
+}
+
+
+.login-container {
+  width: 100%;
+  height: 100vh;
+  @include center(); //gives display: flex;
+  flex-direction: column;
+  background-color:#ffc2b3;
+  .chatroom-title {
+    font-size: 68px;
+    font-family: Georgia, Times New Roman, serif;
+    color:#cc0000;
+      padding: 5px;
+  }
+  .nickname-form {
+    position: relative;
+    .nickname-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #C9E5E6;
+      border-radius: 5px;
+      width: 500px;
+      height: 250px;
+      background-color: #ddff99;
+      .nickname-input-container {
+        max-width: 200px;
+        min-width: 125px;
+        .nickname-label {
+          font-size: 15px;
+        }
+        .nickname-input {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}
+
+.chatroom {
+  @include center(); //gives display: flex;
+  height: 100vh;
+  width: 100%;
+  .chatroom-container {
+    width: 75%;
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.chatroom-header {
+  min-height: 30px;
+  display: flex;
+  .user-text {
+    @include center();
+    margin: 0;
+    display: inline-flex;
+    width: 100px;
+    text-align: center;
+    font-size: 15px;
+    border: 1px solid $border-color;
+    border-right: none;
+  }
+}
+
+.chat-title {
+  @include center();
+  display: inline-flex;
+  margin: 0;
+  text-align: center;
+  flex-grow: 1;
+  font-size: 20px;
+  background-color: $evergreen;
+  border: 1px solid darken($evergreen, 10);
+  font-family: Georgia;
+}
+
+.messages {
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-grow: 1;
+  border-right: 1px solid lighten($border-color, 10);
+  border-left: 1px solid lighten($border-color, 10);
+}
+
+.message-input {
+  resize: none;
+  max-height: 4em;
+  border-radius: 0 0 4px 4px;
+}
+
+.message {
+  margin: 3px 0 5px 0;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 5px;
+  border-bottom: 1px solid $border-color;
+}
+
+.message-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.message-username {
+  font-size: 17px;
+  margin: 0 0 10px 0;
+}
+
+.message-text {
+  white-space: pre-wrap;
+  word-break: break-all;
+  margin: 0;
+  align-self: flex-start;
+  margin-top: -1px;
+}
+
+@media screen and (max-width: 700px) {
+  .nickname-container {
+    padding: calc(50% - 125px) 100px !important;
+  }
+  .chat-title {
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
+
+.error {
+  display: inline-block;
+}
+
+.error-loader {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+
+.error-message {
+  position: absolute;
+  bottom: 0;
+}

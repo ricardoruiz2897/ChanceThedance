@@ -1,0 +1,58 @@
+<html>
+<link href ="chat1.css" rel"stylesheet" type="text/css">
+<script src="chat3.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" media="screen" href="https://production-assets.codepen.io/assets/fullpage/fullpage-27d75a6e8f8239f8c2e01e5c5782c936427abab0338ca423f318c104d54e3b42.css" />
+
+  <link href='//fonts.googleapis.com/css?family=Lato:400,900,400italic,700italic' rel='stylesheet'>
+<script async src="//www.google-analytics.com/analytics.js"></script>
+
+<body>
+<div ng-app="chat" ng-controller="chatController as chat">
+  <div class="login-container" ng-hide="chat.loggedIn">
+    <img class="tech" src="http://yeti.com/media/catalog/product/cache/1/thumbnail/751x440/9df78eab33525d08d6e5fb8d27136e95/c/l/clc-colleges-logo-1500x879-txtech.png" >
+    <h2 class="chatroom-title">Texas Tech  Chatroom</h2>
+    
+
+    <form ng-submit="chat.login()" class="nickname-form">
+      <div class="nickname-container">
+        <div class="nickname-input-container">
+          <label for="nickname" class="nickname-label">YourName:</label>
+          <span class="input-group input-group-sm">
+            <input id="nickname" type="text" class="form-control nickname-input" ng-model="chat.username">
+            <span class="input-group-btn">
+              <input type="submit" class="btn btn-primary" value="Join Chat">
+            </span>
+          </span>
+        </div>
+        <div class="alert alert-danger error-message" ng-show="chat.error">
+          <p class="error"><strong>Error: </strong>{{chat.error}}</p>
+          <img src="https://tinyurl.com/j4kye4p" class="error-loader" alt="loading" />
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="chatroom" ng-show="chat.loggedIn">
+    <div class="chatroom-container">
+      <header class="chatroom-header">
+        <p class="user-text">{{chat.userNumber || 0}} users(s)</p>
+        <p class="chat-title">Messages</p>
+      </header>
+      <div class="messages" scroll-glue>
+        <div class="message" ng-repeat="message in chat.messages track by $index" ng-if="message.text">
+          <div class="message-container">
+            <h4 class="message-username">{{message.username}}:&nbsp;</h4>
+            <p class="message-text">{{message.text}}</p>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <textarea rows="1" class="form-control message-input" ng-model="chat.message" msd-elastic="/n" textarea-submit="chat.sendMessage()"></textarea>
+      </footer>
+    </div>
+  </div>
+</div>
+</body>
+</html>
