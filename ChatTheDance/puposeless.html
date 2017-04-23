@@ -10,8 +10,13 @@
             var username;
 
             //arrays of bad that will be changed to good words
-            var bad_words = ["dick", "idiot", "pussy", "retard", "ass", "asscock", "shit ass", "shit"];
-            var good_words = ["good guy", "smart", "courageous", "intelligent", "good person", "cool", "beatiful person", "good"];
+            var bad_words = ["dick", "idiot", "pussy", 
+                            "retard", "ass", "asscock", 
+                            "shit ass", "shit", "cunt"];
+
+            var good_words = ["good guy", "smart", "courageous",
+                              "intelligent", "good person", "cool", 
+                              "beatiful person", "good", "nice"];
 
             $(document).ready(function(){
 
@@ -25,18 +30,18 @@
 
                 });
 
+                //change the text on the header1
                 $('#header1').text("Welcome " + username);
 
+                //on send message
                 $("#enter_button").click(function(){
 
+                    //text object take the value of input
                     textObjt = $('#chatLine').val();
 
                     //change bad words for good
-
                     //create an array for strings
                     var arr = textObjt.split(" ");
-                    var i = 0;
-
                     
                    for(count = 0; count < arr.length; count++){
 
@@ -60,11 +65,8 @@
 
                     }
                     
-
+                    //put the message on the box, here also send message to server    
                     $("#chatArea").append(username + ": " + n + "<p></p>");
-                    //$("#chatArea").append(username + ": " + textObjt + "<p></p>");
-
-                    //$('#demo').val("hi");
                 });
             });
 
