@@ -2,23 +2,37 @@
 <html>
     <head>
         <title>Chat The Dance</title>
-        <link rel="stylesheet" type="text/css" href="C:\Users\cmpun\Desktop\notname\chat_stylesheet.cs" />
+        <link rel="stylesheet" type="text/css" href="chat_stylesheet.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script>
+
+            var textObjt;
+            $(document).ready(function(){
+
+                $("#enter_button").click(function(){
+
+                    textObjt = $('#chatLine').val();
+                    $('#demo').text(textObjt);
+
+                    //$('#demo').val("hi");
+                });
+            });
+
+        </script>
     </head>
 
 <body>
-
-<div class="chatBox">
-    <div class="chatHeader">
-        <h2>Welcome user</h2>
+    <h1 id="header1"></h1>
+    <div class="chatBox">
+        <div class="chatHeader">
+            <h2>Welcome user</h2>
+        </div> 
+         <div id='chatArea' style='border:1px solid #aaa; width:500px; height:400px; overflow:auto;'>
+             <p id="demo"></p>
+        </div>
+        <input id='chatLine' type='text' value="text here...">
+        <button id="enter_button">Send</button>
     </div>
 
-    <div class="chatContainer"></div>
-
-    <div class="chatInput">
-        <input type="text" name="textBox" id="text" value="" placeholder="Be Gentle" />
-        <input type="button" name="button1" id=" button1" value="enter"/>
-    </div>
-
-</div>
 </body>
 </html>
